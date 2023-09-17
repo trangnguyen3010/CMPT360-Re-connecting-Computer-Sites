@@ -3,13 +3,16 @@ package lib280.graph;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import lib280.base.CursorPosition280;
+import lib280.exception.NoCurrentItem280Exception;
 import lib280.graph.GraphAdjListRep280;
 import lib280.graph.Vertex280;
 import lib280.graph.WeightedEdge280;
-
+import lib280.list.LinkedList280;
 
 public class WeightedGraphAdjListRep280<V extends Vertex280> extends GraphAdjListRep280<V, WeightedEdge280<V>> {
 
@@ -115,7 +118,7 @@ public class WeightedGraphAdjListRep280<V extends Vertex280> extends GraphAdjLis
 	 */
 	public String toString() {
 		CursorPosition280 position = this.currentPosition();
-		
+
 		StringBuffer result = new StringBuffer();
 		result.append(this.numVertices);
 		if (directed)
@@ -127,12 +130,12 @@ public class WeightedGraphAdjListRep280<V extends Vertex280> extends GraphAdjLis
 			result.append("\n Empty graph.");
 			return new String(result);
 		}
-		
+
 		// Iterate over all vertices.
 		this.goFirst();
 		while (!this.after()) {
 			result.append("\n" + item() + " : ");
-			
+
 			// Iterate over all edges for this vertex.
 			this.eGoFirst(this.item());
 			while (!this.eAfter()) {
@@ -147,21 +150,21 @@ public class WeightedGraphAdjListRep280<V extends Vertex280> extends GraphAdjLis
 		return new String(result);
 	}
 	
-	
+		
 	
 	/**
 	 * Obtain the weight of an edge.
-	 * @param srcIdx Index of the source vertex of the edge.
+	 	 * @param srcIdx Index of the source vertex of the edge.
 	 * @param dstIdx Index of the destination vertex of the edge.
 	 * @return The weight of the edge (srcIdx, dstIdx).
 	 */
 	public double getEdgeWeight(int srcIdx, int dstIdx) {
 		return this.getEdgeWeight(this.vertex(srcIdx), this.vertex(dstIdx));
 	}
-	
+
 	/**
 	 * Obtain the weight of the edge from v1 to v2
-	 * @param v1 Source vertex of the edge.
+	 	 * @param v1 Source vertex of the edge.
 	 * @param v2 Destination vertex of the edge.
 	 * @return THe weight of the edge (v1, v2)
 	 */
@@ -169,17 +172,17 @@ public class WeightedGraphAdjListRep280<V extends Vertex280> extends GraphAdjLis
 		// Find the edge (v1, v2)
 		CursorPosition280 p = this.currentPosition();
 		this.eSearch(v1, v2);
-		
+
 		// Obtain it's weight
 		double weight = this.eItem.getWeight();
-		
+
 		// Restore the cursors
 		this.goPosition(p);
-		
+
 		// Return the weight
 		return weight;
 	}
-	
+
 	/**
 	 * Set the weight of an edge.
 	 * @param srcIdx Index of the source vertex of the edge.
@@ -213,15 +216,33 @@ public class WeightedGraphAdjListRep280<V extends Vertex280> extends GraphAdjLis
 		// Restore the cursor positions.
 		this.goPosition(p);
 	}
-	
+
+	/**
+	 * Get list of adjacent vertices of a given vertex
+	 * 
+	 * @param args
+	 * @return
+	 */
+	public List<WeightedEdge280<V>> getAdjacentVertices(V v) {
+		ArrayList<WeightedEdge280<V>> adjList = new ArrayList<>();
+
+		this.eGoFirst(v);
+
+		while (!this.eAfter()) {
+			adjList.add((WeightedEdge280<V>) this.eItem);
+			this.eGoForth();
+		}
+		return adjList;
+	}
+
 	public static void main(String args[]) {
 		WeightedGraphAdjListRep280<Vertex280> G = new WeightedGraphAdjListRep280<Vertex280>(10, false);
 
 		G.initGraphFromFile("src/lib280/graph/weightedtestgraph.gra");
-		
-		System.out.println(G);	
+
+		System.out.println(G);
 		G.clear();
-		
+
 		System.out.println(G);
 	}
 }
