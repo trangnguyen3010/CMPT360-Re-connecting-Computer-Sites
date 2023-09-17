@@ -7,6 +7,8 @@ import lib280.graph.WeightedGraphAdjListRep280;
 
 public class Main {
     public static void main(String[] args) {
+        int originalCost = 0;
+
         // Read inputs
         final Scanner scanner = new Scanner(System.in);
 
@@ -34,7 +36,10 @@ public class Main {
                 if (!scanner.hasNextInt())
                     throw new RuntimeException("Illegal file format or unexpected end of file.");
 
-                double weight = scanner.nextInt();
+                int weight = scanner.nextInt();
+
+                // summing the weight of the original network (T)
+                originalCost += weight;
 
                 if (oldSpanningTree.isAdjacent(srcIdx, dstIdx))
                     throw new RuntimeException("Edge (" + srcIdx + ", " + dstIdx + ") appears multiple times in the data file.");
@@ -47,11 +52,9 @@ public class Main {
 
             }
         }
-        System.out.println(oldSpanningTree);
 
-        final int originalCost = -1;
         final int updatedCost = -1;
         System.out.println(originalCost);
-        System.out.println(updatedCost);
+        System.out.print(updatedCost);
     }
 }
