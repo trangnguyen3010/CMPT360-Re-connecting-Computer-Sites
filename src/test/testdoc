@@ -53,9 +53,9 @@
         -- given: N > 2 
         -- do: add K > 2 edges with weight
     // >2 VERTICES, original minimum cost < new minimum cost
-    - t10: 
+    - t12: 
         -- given: N > 2 
         -- do: add K = 1 edge with weight
-    - t11: 
+    - t13: 
         -- given: N > 2 
         -- do: add K > 2 edges with weight
