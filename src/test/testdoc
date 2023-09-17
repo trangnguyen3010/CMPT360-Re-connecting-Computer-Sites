@@ -1,0 +1,61 @@
+* TEST CASES:
+    - t1: given sample from assignment
+    // 1 VERTEX
+    - t2: 
+        -- given: N = 1, T is the vertex (computer site) itself, M = 0
+        -- do: add K = 1 edge with weight 0 (a loop edge)
+        -- expect:
+            --- original minimum cost: 0
+            --- new minimum cost = 0
+    - t3: 
+        -- given: N = 1, T is the vertex (computer site) itself, M = 0
+        -- do: add K = 1 edge with >0 weight (a loop edge)
+        -- expect:
+            --- original minimum cost: 0
+            --- new minimum cost = 0
+    - t4: 
+        -- given: N = 1, T is the vertex (computer site) itself, M = 1 (a loop edge:(1, 1, w))
+        -- do: add K=0 edge
+        -- expect:
+            --- original minimum cost: 0
+            --- new minimum cost: 0
+    // 2 VERTICES
+    - t5: 
+        -- given: N = 2, T: [(1, 2, 4)], M = 1 ([(1,2,4)])
+        -- do: add K = 0
+        -- expect:
+            --- original minimum cost: 4
+            --- new minimum cost = 4
+    - t6: 
+        -- given: N = 2, T: [(1, 2, 4)], M = 1 ([(1,2,4)])
+        -- do: add K = 2 (add 2 loop edges with some weight)
+        -- expect:
+            --- original minimum cost: 4
+            --- new minimum cost = 4
+    // >2 VERTICES, original minimum cost = new minimum cost
+    - t7: 
+        -- given: N > 2
+        -- do: add K = 0 edge
+        -- expect: original minimum cost = new minimum cost
+    - t8: 
+        -- given: N > 2
+        -- do: add K = 1 edge with weights
+        -- expect: original minimum cost = new minimum cost
+    - t9: 
+        -- given: N > 2
+        -- do: add K > 2 edges with weights
+        -- expect: original minimum cost = new minimum cost
+    // >2 VERTICES, original minimum cost > new minimum cost
+    - t10: 
+        -- given: N > 2 
+        -- do: add K = 1 edge with weight
+    - t11: 
+        -- given: N > 2 
+        -- do: add K > 2 edges with weight
+    // >2 VERTICES, original minimum cost < new minimum cost
+    - t10: 
+        -- given: N > 2 
+        -- do: add K = 1 edge with weight
+    - t11: 
+        -- given: N > 2 
+        -- do: add K > 2 edges with weight
