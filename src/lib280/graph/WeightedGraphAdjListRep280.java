@@ -218,12 +218,12 @@ public class WeightedGraphAdjListRep280<V extends Vertex280> extends GraphAdjLis
 	}
 
 	/**
-	 * Get list of adjacent vertices of a given vertex
+	 * Get list of all edges that incident at a given vertex
 	 * 
 	 * @param args
 	 * @return
 	 */
-	public List<WeightedEdge280<V>> getAdjacentVertices(V v) {
+	public List<WeightedEdge280<V>> getAllEdgesFromV(V v) {
 		ArrayList<WeightedEdge280<V>> adjList = new ArrayList<>();
 
 		this.eGoFirst(v);
