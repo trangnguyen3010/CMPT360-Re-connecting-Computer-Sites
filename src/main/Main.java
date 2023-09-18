@@ -25,9 +25,15 @@ public class Main {
 
         // Read N
         final int n = Integer.parseInt(scanner.nextLine());
-        final WeightedGraphAdjListRep280<Vertex280> oldSpanningTree = new WeightedGraphAdjListRep280<Vertex280>(n,
-                false);
-        oldSpanningTree.ensureVertices(n);
+
+        // Read the graph 'graph' which has N vertices, and have T + K edges
+        // and apply Prim's algorithm to find the new spanning tree T'
+        // (We don't need to add the rest of originally available high-speed lines (lets call them U)
+        // since for each vertex, its minimum edge must be included in T
+        // we know the edge that is in T would always smaller or equal to that one that is in U)
+        // so we only need to consider the edge in T vs the new edge in K (if any)
+        final WeightedGraphAdjListRep280<Vertex280> graph = new WeightedGraphAdjListRep280<Vertex280>(n, false);
+        graph.ensureVertices(n);
 
         List<WeightedEdge280> allEdgesToConsider = new ArrayList<>();
 
@@ -36,7 +42,7 @@ public class Main {
         // We know T has N-1 edges because T is spanning tree with n vertices
         for (int i = 0; i < n - 1; i++) {
             if (scanner.hasNext()) {
-                WeightedEdge280<Vertex280> addedEdge = addEdgeForGraphFromStandarIn(oldSpanningTree, scanner);
+                WeightedEdge280<Vertex280> addedEdge = addEdgeForGraphFromStandarIn(graph, scanner);
 
                 // summing the weight of the original network (T)
                 originalCost += addedEdge.getWeight();
@@ -46,15 +52,11 @@ public class Main {
             }
         }
 
-        // Read K
+        // Add the next K edges to the graph
         final int k = scanner.nextInt();
-        final WeightedGraphAdjListRep280<Vertex280> newGraph = (WeightedGraphAdjListRep280<Vertex280>) oldSpanningTree
-                .clone();
 
         for (int i = 0; i < k; i++) {
-
-            WeightedEdge280<Vertex280> addedEdge = addEdgeForGraphFromStandarIn(newGraph, scanner);
-
+            WeightedEdge280<Vertex280> addedEdge = addEdgeForGraphFromStandarIn(graph, scanner);
             // Add the edge to the K's edge list
             allEdgesToConsider.add(addedEdge);
         }
@@ -63,34 +65,10 @@ public class Main {
                 .sorted(Comparator.comparingDouble(WeightedEdge280::getWeight))
                 .collect(Collectors.toList());
 
-        final double updatedCost = calculateCost(newGraph);
+        final double updatedCost = calculateCost(graph);
 
         System.out.println(originalCost);
         System.out.print((int) updatedCost);
-    }
-
-    private static WeightedEdge280<Vertex280> addEdgeForGraphFromStandarIn(
-            final WeightedGraphAdjListRep280<Vertex280> graph, final Scanner scanner) {
-        // Get source vertex.
-        int srcIdx = getNextInt(scanner);
-
-        // Get destination vertex.
-        int dstIdx = getNextInt(scanner);
-
-        // Get the weight of the edge.
-        int weight = getNextInt(scanner);
-
-        if (graph.isAdjacent(srcIdx, dstIdx))
-            throw new RuntimeException(
-                    "Edge (" + srcIdx + ", " + dstIdx + ") appears multiple times in the data file.");
-
-        // Add the new edge.
-        graph.addEdge(srcIdx, dstIdx);
-
-        // Set the weight of the new edge.
-        graph.setEdgeWeight(srcIdx, dstIdx, weight);
-
-        return graph.getEdge(srcIdx, dstIdx);
     }
 
     private static int getNextInt(final Scanner scanner) {
@@ -125,9 +103,6 @@ public class Main {
 
             sum += choosenEdge.getWeight();
 
-            // System.out.println("Choose edge: " + choosenEdge.toString() + " " + choosenEdge.getWeight());
-            // System.out.println("Current vertex: " + currentVertex.toString());
-
             edgeOptions.remove(0);
 
             // Add new options
@@ -141,11 +116,32 @@ public class Main {
                     .filter(e -> !isSeen.contains(e.firstItem()) || !isSeen.contains(e.secondItem()))
                     .sorted(Comparator.comparingDouble(WeightedEdge280::getWeight))
                     .collect(Collectors.toList());
-
-            // edgeOptions.forEach(e -> System.out.println(e.toString()));
-            // isSeen.forEach(e -> System.out.println(e));
         }
         return sum;
+    }
+
+    private static WeightedEdge280<Vertex280> addEdgeForGraphFromStandarIn(
+            final WeightedGraphAdjListRep280<Vertex280> graph, final Scanner scanner) {
+        // Get source vertex.
+        int srcIdx = getNextInt(scanner);
+
+        // Get destination vertex.
+        int dstIdx = getNextInt(scanner);
+
+        // Get the weight of the edge.
+        int weight = getNextInt(scanner);
+
+        if (graph.isAdjacent(srcIdx, dstIdx))
+            throw new RuntimeException(
+                    "Edge (" + srcIdx + ", " + dstIdx + ") appears multiple times in the data file.");
+
+        // Add the new edge.
+        graph.addEdge(srcIdx, dstIdx);
+
+        // Set the weight of the new edge.
+        graph.setEdgeWeight(srcIdx, dstIdx, weight);
+
+        return graph.getEdge(srcIdx, dstIdx);
     }
 
 }
