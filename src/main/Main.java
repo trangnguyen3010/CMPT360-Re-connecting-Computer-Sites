@@ -1,16 +1,10 @@
 package main;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.IllegalFormatException;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import lib280.graph.Vertex280;

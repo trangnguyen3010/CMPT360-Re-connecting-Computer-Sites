@@ -1,0 +1,109 @@
+commit d6ca3439cfa79e82e2610986bf87b941bf71b1bf
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Mon Sep 18 16:35:04 2023 -0600
+
+    fixed wrong test case input
+
+commit 214019b1b0561e972eb53daa44ccc700eb1eabe8
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Mon Sep 18 16:34:51 2023 -0600
+
+    did some clean-up and refactoring
+
+commit 1c70fb7c6033a1587a7402d2d6093859214eca82
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Mon Sep 18 12:07:57 2023 -0600
+
+    did some clean up
+    added the test results file
+
+commit 5c7883a22ca4e0908ec3ae6d12b64239475e4369
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sun Sep 17 16:18:07 2023 -0600
+
+    Passed all tests
+
+commit 87c839ae0de31dcb6fa85153402dc2c0fc3138cd
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sun Sep 17 13:53:51 2023 -0600
+
+    added a extra function in weighted graph class to faciliate the calculation
+    passed test [2, 6]
+
+commit 49f91fc21e92243ce4711ea3d1a6e421b73d82c9
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sun Sep 17 01:22:55 2023 -0600
+
+    Read K and K edge list
+
+commit 5ccce03a7b6894a70b816af3c563d8438e9d266c
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sun Sep 17 00:07:25 2023 -0600
+
+    correctly calculated the cost of original network T
+
+commit ef1b0572474e4e17d9d646aff7ac914a308813c7
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 23:56:13 2023 -0600
+
+    updated test script
+
+commit 1c4c0b38015ff4b2aa206254279d726289f73f98
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 23:12:26 2023 -0600
+
+    added a script to run all tests
+
+commit fd2e551b11c052d03b30877352b08aa5c74992a9
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 22:04:10 2023 -0600
+
+    added test files for all cases
+
+commit d6dcc87607732f62364d3e96df77c4ab1a04799d
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 21:49:19 2023 -0600
+
+    deleted the invalid test cases
+
+commit c505205c8303dbb7fa37d2d4d74a08bbe846e891
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 21:27:10 2023 -0600
+
+    fixed typos in test doc
+
+commit 13bad4622694d252eff4646864816a8564e849bf
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 21:26:20 2023 -0600
+
+    added a doc brainstorming the test cases
+
+commit aea75a62a4e92eb09bf02d4c7e4e72ddb771aeda
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 18:22:08 2023 -0600
+
+    read the spanning tree T
+
+commit ff8f7fece9aa95226858b219d4a183072010521f
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 18:20:29 2023 -0600
+
+    compiled the necessary packages in lib280 to use in our main package
+
+commit da83346c67773ff99b671df1c04bc359a9018068
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 13:51:57 2023 -0600
+
+    reorganized the repo and added a quick dirty script to compile and run Java file
+
+commit 08b7490cd99de2fecc808c05f7d86ae6f732c29a
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 11:55:35 2023 -0600
+
+    added the lib280 to source code
+
+commit af681c7c49f7dbb555dde4182cda7b9e0e3da099
+Author: Trang Nguyen <trang.nguyen@benevity.com>
+Date:   Sat Sep 16 11:34:22 2023 -0600
+
+    initialized the project
